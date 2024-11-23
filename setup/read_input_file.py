@@ -75,7 +75,7 @@ def input_file_creation(config_params):
             print("df modality shape:",df_modality.shape)
             df_modality = df_modality[~df_modality['Views'].isnull()]
             print("df modality no null view:",df_modality.shape)
-            df_modality['FullPath'] = config_params['preprocessed_imagepath']+'/'+df_modality['ShortPath']
+            df_modality['FullPath'] = config_params['preprocessed_imagepath']+'/'+df_modality['ImagePath']
             if config_params['labeltouse'] == 'imagelabel':
                 df_modality['Groundtruth'] = df_modality['ImageLabel']
             elif config_params['labeltouse'] == 'caselabel':
@@ -168,9 +168,9 @@ def input_file_creation(config_params):
                 df_instances['Groundtruth'] = df_instances['CaseLabel']
                 if config_params['dataset'] == 'zgt':
                     if config_params['bitdepth'] == 12:
-                        df_instances['FullPath'] = config_params['preprocessed_imagepath']+df_instances['ShortPath'].str.rstrip('.png')+'.npy'
+                        df_instances['FullPath'] = config_params['preprocessed_imagepath']+df_instances['ImagePath'].str.rstrip('.png')+'.npy'
                     elif config_params['bitdepth'] == 8:
-                        df_instances['FullPath'] = config_params['preprocessed_imagepath']+df_instances['ShortPath']
+                        df_instances['FullPath'] = config_params['preprocessed_imagepath']+df_instances['ImagePath']
                 else:
                     df_instances['FullPath'] = config_params['preprocessed_imagepath']+'/'+df_instances['ShortPath']
                 #df_instances=pd.read_csv('/projects/dso_mammovit/project_kushal/data/MG_training_files_cbis-ddsm_singleinstance_caselabel_groundtruth.csv', sep=';')
@@ -183,10 +183,10 @@ def input_file_creation(config_params):
                 df_test = df_instances[df_instances['ImageName'].str.split('_').str[:3].str.join('_').isin(df_test['FolderName'].tolist())]
             
             elif config_params['dataset'] == 'zgt':
-                df_train = df_instances[df_instances['CasePath'].isin(df_train['ShortPath'].tolist())]
+                df_train = df_instances[df_instances['CasePath'].isin(df_train['CasePath'].tolist())]
                 if config_params['usevalidation']:
-                    df_val = df_instances[df_instances['CasePath'].isin(df_val['ShortPath'].tolist())]
-                df_test = df_instances[df_instances['CasePath'].isin(df_test['ShortPath'].tolist())]
+                    df_val = df_instances[df_instances['CasePath'].isin(df_val['CasePath'].tolist())]
+                df_test = df_instances[df_instances['CasePath'].isin(df_test['CasePath'].tolist())]
 
             print('check continues...')
             if config_params['dataset'] == 'cbis-ddsm':
@@ -226,7 +226,7 @@ def input_file_creation(config_params):
             print("df modality shape:",df_modality.shape)
             df_modality = df_modality[~df_modality['Views'].isnull()]
             print("df modality no null view:",df_modality.shape)
-            df_modality['FullPath'] = config_params['preprocessed_imagepath']+'/'+df_modality['ShortPath']
+            df_modality['FullPath'] = config_params['preprocessed_imagepath']+'/'+df_modality['CasePath']
             if config_params['numclasses']==3:
                 df_modality['Groundtruth'] = df_modality['Groundtruth_3class']
             elif (config_params['numclasses']==1) or (config_params['numclasses']==2):
