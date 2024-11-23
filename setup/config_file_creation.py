@@ -78,7 +78,7 @@ for hyperparam in hyperparam_config[start:end]:
             "flipimage": True, #True,
             "randseedother": 8, #options=8, 24, 80
             "randseeddata": 8, #options=8, 24, 80, 42
-            "device": 'gpu', #cuda, cuda:0, cpu
+            "device": 'cpu', #cuda, cuda:0, cpu
             "trainingmethod": 'fixedlr', #options: multisteplr1, fixedlr, lrdecayshu, lrdecaykim, cosineannealing, cosineannealing_pipnet
             "channel": 3, #options: 3 for rgb, 1 for grayscale
             "regionpooling": 't-pool', #options: shu_ggp, shu_rgp, avgpool, maxpool, 1x1conv, t-pool
@@ -90,9 +90,9 @@ for hyperparam in hyperparam_config[start:end]:
             "dataset": 'zgt', #options = cbis-ddsm, zgt, vindr, cmmd
             "bitdepth": 12, #options: 8, 16
             "labeltouse": 'caselabel', #'imagebirads', #options: imagelabel, caselabel
-            "SIL_csvfilepath": "/mnt/dataset/input_data/MG_training_files_studyUID_accessionNum_viewnames_final4_viewsextended_SI.csv", 
-            "MIL_csvfilepath": "/mnt/dataset/input_data/MG_training_files_studyUID_accessionNum_viewnames_final4_viewsextended.csv", 
-            "preprocessed_imagepath": "/mnt/dataset",
+            "SIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased-SI.csv", 
+            "MIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased.csv", 
+            "preprocessed_imagepath": "/mnt/dataset/CLaM-sample",
             "valloss_resumetrain": False,
             "papertoreproduce": False,
             "early_stopping_criteria": 'loss',
@@ -125,7 +125,7 @@ for hyperparam in hyperparam_config[start:end]:
     elif config_object["parametersetting"]['dataset'] == 'zgt':
         #path_to_output="/homes/spathak/multiview_mammogram/models_results/zgt/ijcai23/"+filename+"/"
         #path_to_output = "/home/pathaks/PhD/case-level-breast-cancer/multiview_mammogram/models_results/zgt/ijcai23/" + filename + "/"
-        path_to_output = os.path.join(".","runs",'run1') + '\\'
+        path_to_output = os.path.join(".","runs",'run2') + '\\'
     elif config_object["parametersetting"]['dataset'] == 'vindr':
         path_to_output = "/home/pathaks/PhD/case-level-breast-cancer/multiview_mammogram/models_results/vindr/ijcai23/" + filename + "/"
         #path_to_output="/homes/spathak/multiview_mammogram/models_results/vindr/ijcai23/"+filename+"/"
