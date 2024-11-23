@@ -366,9 +366,9 @@ def view_extraction(series_list, views_allowed):
 def selecting_data(config_params, img_list):
     if config_params['dataset'] == 'zgt':
         if config_params['bitdepth'] == 8:
-            img_list = list(filter(lambda x: re.search('_processed.png$', x), img_list))
+            img_list = list(filter(lambda x: re.search('.png$', x), img_list))
         elif config_params['bitdepth'] == 12:
-            img_list = list(filter(lambda x: re.search('_processed.npy$', x), img_list))
+            img_list = list(filter(lambda x: re.search('.npy$', x), img_list))
     return img_list
 
 def views_allowed_dataset(config_params):
@@ -388,7 +388,7 @@ def collect_cases(config_params, data):
     studyuid_path = str(data['FullPath'])
     if config_params['dataset'] == 'zgt':
         df_si = pd.read_csv(config_params['SIL_csvfilepath'], sep=';')
-        series_list = df_si.loc[df_si['AccessionNum']==data['AccessionNum'], 'ShortPath']
+        series_list = df_si.loc[df_si['CasePath']==data['CasePath'], 'ImagePath']
         series_list = series_list.str.split('/').str[-2].values
         #if data['AccessionNum']==6002199789:
         #    print(series_list)
