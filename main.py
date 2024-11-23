@@ -67,18 +67,18 @@ if __name__=='__main__':
     # Create a new MLflow Experiment
     # set username and password through environment variables. 
     # This is needed for accessing the mlflow client when submitting your code to fe.zgt.nl.
-    '''username = ''
-    password = ''
+    username = 'your-username' #can be found when logging to fe.zgt.nl
+    password = 'your-password' #can be found when logging to fe.zgt.nl
     
     os.environ["MLFLOW_TRACKING_USERNAME"] = username
     os.environ["MLFLOW_TRACKING_PASSWORD"] = password
-    '''
+    
     # Set our tracking server uri for logging
-    #mlflow.set_tracking_uri(uri="http://localhost:3001")
+    mlflow.set_tracking_uri(uri="http://localhost:3001")
     
-    mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
+    #mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
     
-    mlflow.set_experiment("exp1")
+    mlflow.set_experiment(username)
 
     mlflow.start_run()
 
@@ -97,7 +97,9 @@ if __name__=='__main__':
     
     config_params = read_config_file(config_file)
     #config_params['batchsize'] = 1
-    config_params['path_to_output'] = os.getcwd() + '/runs/run2'
+    config_params['path_to_output'] = '/mnt/export/runs/run2' #os.getcwd() + '/runs/run2'
+    if not os.path.exists(config_params['path_to_output']):
+        os.makedirs(config_params['path_to_output'])
     #config_params['path_to_output'] = "/".join(config_file.split('/')[:-1])
     
     g = set_random_seed(config_params)
