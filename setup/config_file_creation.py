@@ -90,8 +90,8 @@ for hyperparam in hyperparam_config[start:end]:
             "dataset": 'zgt', #options = cbis-ddsm, zgt, vindr, cmmd
             "bitdepth": 12, #options: 8, 16
             "labeltouse": 'caselabel', #'imagebirads', #options: imagelabel, caselabel
-            "SIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased-SI.csv", 
-            "MIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased.csv", 
+            "SIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased-image.csv", 
+            "MIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased-case.csv", 
             "preprocessed_imagepath": "/mnt/dataset",
             "valloss_resumetrain": False,
             "papertoreproduce": False,
