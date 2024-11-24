@@ -92,7 +92,7 @@ for hyperparam in hyperparam_config[start:end]:
             "labeltouse": 'caselabel', #'imagebirads', #options: imagelabel, caselabel
             "SIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased-SI.csv", 
             "MIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased.csv", 
-            "preprocessed_imagepath": "/mnt/dataset/CLaM-sample",
+            "preprocessed_imagepath": "/mnt/dataset",
             "valloss_resumetrain": False,
             "papertoreproduce": False,
             "early_stopping_criteria": 'loss',
