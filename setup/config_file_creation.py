@@ -78,7 +78,7 @@ for hyperparam in hyperparam_config[start:end]:
             "flipimage": True, #True,
             "randseedother": 8, #options=8, 24, 80
             "randseeddata": 8, #options=8, 24, 80, 42
-            "device": 'cpu', #cuda, cuda:0, cpu
+            "device": 'cuda:0', #cuda, cuda:0, cpu
             "trainingmethod": 'fixedlr', #options: multisteplr1, fixedlr, lrdecayshu, lrdecaykim, cosineannealing, cosineannealing_pipnet
             "channel": 3, #options: 3 for rgb, 1 for grayscale
             "regionpooling": 't-pool', #options: shu_ggp, shu_rgp, avgpool, maxpool, 1x1conv, t-pool
@@ -90,8 +90,8 @@ for hyperparam in hyperparam_config[start:end]:
             "dataset": 'zgt', #options = cbis-ddsm, zgt, vindr, cmmd
             "bitdepth": 12, #options: 8, 16
             "labeltouse": 'caselabel', #'imagebirads', #options: imagelabel, caselabel
-            "SIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased-image.csv", 
-            "MIL_csvfilepath": "/mnt/dataset/clam-small-subset-deceased-case.csv", 
+            "SIL_csvfilepath": "/mnt/dataset/clam-details-image.csv", 
+            "MIL_csvfilepath": "/mnt/dataset/clam-details-case.csv", 
             "preprocessed_imagepath": "/mnt/dataset",
             "valloss_resumetrain": False,
             "papertoreproduce": False,
@@ -125,7 +125,7 @@ for hyperparam in hyperparam_config[start:end]:
     elif config_object["parametersetting"]['dataset'] == 'zgt':
         #path_to_output="/homes/spathak/multiview_mammogram/models_results/zgt/ijcai23/"+filename+"/"
         #path_to_output = "/home/pathaks/PhD/case-level-breast-cancer/multiview_mammogram/models_results/zgt/ijcai23/" + filename + "/"
-        path_to_output = os.path.join(".","runs",'run2') + '\\'
+        path_to_output = os.path.join(".","runs",'run1') + '\\'
     elif config_object["parametersetting"]['dataset'] == 'vindr':
         path_to_output = "/home/pathaks/PhD/case-level-breast-cancer/multiview_mammogram/models_results/vindr/ijcai23/" + filename + "/"
         #path_to_output="/homes/spathak/multiview_mammogram/models_results/vindr/ijcai23/"+filename+"/"

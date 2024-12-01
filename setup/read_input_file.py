@@ -292,10 +292,10 @@ def input_file_creation(config_params):
     print("Total instances:", total_instances)
     
 
-    #df_train = df_train[100:140]
+    df_train = df_train[100:140]
     #df_train = pd.concat([df_train[100:110], df_train[df_train['Views']=='LCC'], df_train[df_train['Views']=='LCC+RCC'], df_train[df_train['Views']=='LCC+LMLO']])
-    #df_val = df_val[:20]
-    #df_test = df_test[20:40]
+    df_val = df_val[:20]
+    df_test = df_test[20:40]
 
     #reset index     
     df_train = df_train.reset_index()
