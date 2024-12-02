@@ -10,10 +10,7 @@ import sys
 import openpyxl as op
 from openpyxl import Workbook
 
-def output_files(config_file, config_params, num_config_start, num_config_end):
-    #output files path
-    path_to_output = "/".join(config_file.split('/')[:-1])+'/'
-
+def output_files(path_to_output, config_params, num_config_start, num_config_end):
     #check output_folder path
     if not os.path.exists(path_to_output):
         print("Error! config file path does not exist! This code needs the same path to store the output files and model.")

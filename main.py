@@ -58,7 +58,7 @@ if __name__=='__main__':
     
     #args.config_file_path = '../runs/run1/'
     #args.config_file_path = '/home/runs/run1/'
-    args.config_file_path = os.getcwd() + '/runs/run2'
+    args.config_file_path = os.getcwd() + '/runs/run1'
     num_config_start = args.num_config_start
     num_config_end = args.num_config_end
 
@@ -91,13 +91,13 @@ if __name__=='__main__':
     #print("config files to be read:",config_file_names[num_config_start:num_config_end])
     
     #config_file = '/home/runs/run1/config_8.ini'
-    config_file = './runs/run2/config_8.ini'
+    config_file = './runs/run1/config_8.ini'
     #for config_file in config_file_names[num_config_start:num_config_end]:
     begin_time = datetime.datetime.now()
     
     config_params = read_config_file(config_file)
     #config_params['batchsize'] = 1
-    config_params['path_to_output'] = '/mnt/export/runs/run2' #os.getcwd() + '/runs/run2'
+    config_params['path_to_output'] = '/mnt/export/runs/run1' #os.getcwd() + '/runs/run2'
     if not os.path.exists(config_params['path_to_output']):
         os.makedirs(config_params['path_to_output'])
     #config_params['path_to_output'] = "/".join(config_file.split('/')[:-1])
@@ -105,11 +105,11 @@ if __name__=='__main__':
     g = set_random_seed(config_params)
     
     if config_params['usevalidation']:
-        path_to_model, path_to_results_xlsx, path_to_results_text, path_to_learning_curve, path_to_log_file, path_to_hyperparam_search = output_files(config_file, config_params, num_config_start, num_config_end)
+        path_to_model, path_to_results_xlsx, path_to_results_text, path_to_learning_curve, path_to_log_file, path_to_hyperparam_search = output_files(config_params['path_to_output'], config_params, num_config_start, num_config_end)
         df_train, df_val, df_test, batches_train, batches_val, batches_test, view_group_indices_train = input_file_creation(config_params)
         dataloader_train, dataloader_val, dataloader_test = dataloader(config_params, df_train, df_val, df_test, view_group_indices_train, g)
     else:
-        path_to_model, path_to_results_xlsx, path_to_results_text, path_to_learning_curve, path_to_log_file = output_files(config_file, config_params, num_config_start, num_config_end)
+        path_to_model, path_to_results_xlsx, path_to_results_text, path_to_learning_curve, path_to_log_file = output_files(config_params['path_to_output'], config_params, num_config_start, num_config_end)
         df_train, df_test, batches_train, batches_test, view_group_indices_train = input_file_creation(config_params)
         dataloader_train, dataloader_test = dataloader(config_params, df_train, None, df_test, view_group_indices_train, g)
     
